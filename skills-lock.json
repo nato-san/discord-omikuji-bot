@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "nansen-agent-guide": {
+      "source": "nansen-ai/nansen-cli",
+      "sourceType": "github",
+      "computedHash": "34f190749b32f89d4ee5173e5efa0a1f7d69e6f1731fe5ef33987cb0ea54795d"
+    },
+    "nansen-alerts-webhook-listener": {
+      "source": "nansen-ai/nansen-cli",
+      "sourceType": "github",
+      "computedHash": "c4e48a238f089f2ffbeec0feaa4a911089cb486185b571ca862feabe634756bc"
+    }
+  }
+}
