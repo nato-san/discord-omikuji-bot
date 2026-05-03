@@ -1,0 +1,28 @@
+name: Run Discord Bot
+
+on:
+  push:
+    branches: [ "main" ]
+  schedule:
+    # 5時間に1回、強制的にリスタートさせる（GitHubの6時間制限を回避するため）
+    - cron: "0 */5 * * *"
+  workflow_dispatch: # 手動で起動できるようにする
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Run Bot
+        env:
+          # ここで GitHub Secrets に登録した鍵を読み込む設定です
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          NANSEN_API_KEY: ${{ secrets.NANSEN_API_KEY }}
+        run: npm start
+        timeout-minutes: 360 # 最大6時間で自動終了させる
